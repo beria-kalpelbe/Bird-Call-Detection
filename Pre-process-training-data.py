@@ -51,7 +51,7 @@ print('Shape of Y: ', str(Y.shape))
 
 
 print("Converting all audio sequences in images......")
-X_S = convert_all_to_image(X)
+X_S = convert_all_to_image(X, n_fft, hop_length, n_mels)
 np.save(basedir_data+'x_s.npy', X_S)
 
 unique, counts = np.unique(Y, return_counts=True)

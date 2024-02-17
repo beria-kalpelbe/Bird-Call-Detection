@@ -18,10 +18,10 @@ def audio_to_spectrogram(audio, n_fft, hop_length, n_mels):
   return spec_scaled
 
 # This function converts all audio segments in a list to spectrograms.
-def convert_all_to_image(segments):
+def convert_all_to_image(segments, n_fft, hop_length, n_mels):
   spectrograms = []
   for segment in segments:
-      spectrograms.append(audio_to_spectrogram(segment))
+      spectrograms.append(audio_to_spectrogram(segment, n_fft, hop_length, n_mels))
   return np.array(spectrograms)
 
 # This function augments a spectrogram by randomly masking out time and frequency regions.

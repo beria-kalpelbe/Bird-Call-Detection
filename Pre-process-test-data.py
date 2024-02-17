@@ -25,7 +25,7 @@ Y_test = Y_test[chosen_indexes]
 print(X_test.shape)
 print(Y_test.shape)
 
-X_test_S = convert_all_to_image(X_test)
+X_test_S = convert_all_to_image(X_test, n_fft, hop_length, n_mels)
 
 np.save(basedir_data+'X_test_S.npy', X_test_S)
 np.save(basedir_data+'Y_test.npy', Y_test)
