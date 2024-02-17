@@ -20,7 +20,7 @@ species_folder = '.' # Should contain /Audio and /Annotations, don't change this
 file_type = 'svl' # don't change this
 audio_extension = '.wav' # don't change this
 
-basedir_data = 'Saved data/'
+basedir_data = 'Saved_data/'
 
 call_order = ['0','1']
 
