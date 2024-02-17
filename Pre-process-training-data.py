@@ -26,11 +26,13 @@ if colab:
     downloaded = drive.CreateFile({'id':"1seDpWl9c28V-kCQxjhkuaws7i8d-_R31"})
     downloaded.GetContentFile('Data.zip')
 
+print("Data extraction..................")
 # Extract files to temporary location in Google Drive
 with zipfile.ZipFile('Data.zip', 'r') as zip_file:
     zip_file.extractall()
 
 
+print('Preprocessing..............')
 # This takes about 1 minute
 pre_pro = Preprocessing(species_folder, lowpass_cutoff,
                 downsample_rate, nyquist_rate,
