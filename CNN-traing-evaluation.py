@@ -1,8 +1,4 @@
-import librosa
 import numpy as np
-import random
-import tensorflow as tf
-from IPython.display import Audio
 import matplotlib.pyplot as plt
 from Functions import *
 from Contants import *
@@ -58,7 +54,7 @@ print(model1.summary())
 
 print("Train - Validation set splitting ...............")
 X_train, X_val, y_train, y_val = train_test_split(X_dataset, Y_dataset, test_size=0.2, random_state=42)
-
+del X_dataset, Y_dataset
 print('Training ..............')
 model1.compile(loss='categorical_crossentropy',
               optimizer='adam',
@@ -68,7 +64,7 @@ history1 = model1.fit(X_train,
           y_train ,
           epochs=10, validation_data=(X_val, y_val),
           batch_size=32)
-
+del X_train, y_train
 np.save(basedir_data+"history_CNN_good.npy", history1.history)
 
 """

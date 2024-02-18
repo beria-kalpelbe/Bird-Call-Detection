@@ -15,10 +15,9 @@ n_mels = 128 # Spectrogram number of mells
 f_min = 2000 # Spectrogram, minimum frequency for call
 f_max = 7000 # Spectrogram, maximum frequency for call
 
-# Don't change these
-species_folder = '.' # Should contain /Audio and /Annotations, don't change this
-file_type = 'svl' # don't change this
-audio_extension = '.wav' # don't change this
+species_folder = '.'
+file_type = 'svl'
+audio_extension = '.wav'
 
 basedir_data = 'Saved_data/'
 
