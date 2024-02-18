@@ -10,6 +10,8 @@ The data used in this work were recorded directly in the field at <a href="https
     <img src="rasberry.jpg" width="80%" alt="Raspberry Image">
 </div>
 
+To keep the Raspberry Pi running smoothly, a background job has been set up so that as soon as the device is switched on, the sound recording task begins. Sequences of 30s of audio are then recorded.
+
 The full dataset can be found <a href="https://doi.org/10.5281/zenodo.10675498"> here</a>
 
 
@@ -18,7 +20,6 @@ There is a demo <a href=""> here in colab </a> for the pre-processing and models
 
 ## Setting up
 ### 1. Load data file
-To keep the Raspberry Pi running smoothly, a background job has been set up so that as soon as the device is switched on, the sound recording task begins. Sequences of 30s of audio are then recorded.
 
 To keep the code running, you need to have a data file `Data.zip` having the structure below:
 
