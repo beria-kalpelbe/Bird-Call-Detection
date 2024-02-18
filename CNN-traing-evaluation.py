@@ -109,6 +109,7 @@ print(Y_test_dataset.shape)
 print("|________prediction.....")
 y_pred_probs = model1.predict(X_test_dataset)
 y_pred = np.argmax(y_pred_probs, axis=1)
+np.save(basedir_data+'y_pred_CNN.npy', y_pred)
 
 """
 Confusion matrix plotting

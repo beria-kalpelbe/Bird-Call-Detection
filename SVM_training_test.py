@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 from Functions import *
 from Contants import *
 from sklearn import svm
-from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, roc_curve, auc
 from sklearn.preprocessing import StandardScaler
 import seaborn as sns
@@ -30,6 +29,7 @@ print(Y_dataset.shape)
 """
 Model training
 """
+print('Model training...........')
 # Standardize the feature values (mean=0, variance=1)
 scaler = StandardScaler()
 new_dataset = np.zeros((X_dataset.shape[0], X_dataset.shape[1]*X_dataset.shape[2]))
@@ -46,6 +46,7 @@ clf.fit(new_dataset, Y_dataset)
 """
 Model testing
 """
+print('Model testing.............')
 with open(basedir_data+'X_test_S.npy', 'rb') as f:
     X_test_dataset = np.load(f)
 with open(basedir_data+'Y_test.npy', 'rb') as f:
@@ -59,6 +60,8 @@ Y_test_dataset = Y_test_dataset.astype(int)
 
 # Make predictions on the test set
 y_pred = clf.predict(new_test_dataset)
+
+np.save(basedir_data+'y_pred_SVM.npy', y_pred)
 
 y_prob = clf.predict_proba(new_test_dataset)[:, 1]
 fpr, tpr, thresholds = roc_curve(Y_test_dataset, y_prob)
@@ -97,6 +100,7 @@ plt.show()
 """
 Performances metrics
 """
+print('Performance metrics calculation .........')
 # Evaluate the accuracy
 accuracy = accuracy_score(Y_test_dataset, y_pred)
 

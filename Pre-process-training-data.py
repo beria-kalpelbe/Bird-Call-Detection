@@ -9,29 +9,6 @@ from Functions import *
 from Contants import *
 import zipfile
 
-if colab:
-    from google.colab import drive
-    from pydrive.auth import GoogleAuth
-    from pydrive.drive import GoogleDrive
-    from google.colab import auth
-    from oauth2client.client import GoogleCredentials
-
-    # Google Authentication
-    auth.authenticate_user()
-    gauth = GoogleAuth()
-    gauth.credentials = GoogleCredentials.get_application_default()
-    drive = GoogleDrive(gauth)
-
-    # Download data files
-    downloaded = drive.CreateFile({'id':"1seDpWl9c28V-kCQxjhkuaws7i8d-_R31"})
-    downloaded.GetContentFile('Data.zip')
-
-print("Data extraction..................")
-# Extract files to temporary location in Google Drive
-with zipfile.ZipFile('Data.zip', 'r') as zip_file:
-    zip_file.extractall()
-
-
 print('Preprocessing..............')
 # This takes about 1 minute
 pre_pro = Preprocessing(species_folder, lowpass_cutoff,

@@ -18,10 +18,10 @@ pre_pro_test.training_files = './DataFiles/TestingFiles.txt'
 X_test, Y_test = pre_pro_test.create_dataset(False)
 
 
-# indexes = range(X_test.shape[0])
-# chosen_indexes = np.random.choice(indexes, size=500, replace=False)
-# X_test = X_test[chosen_indexes,:]
-# Y_test = Y_test[chosen_indexes]
+indexes = range(X_test.shape[0])
+chosen_indexes = np.random.choice(indexes, size=500, replace=False)
+X_test = X_test[chosen_indexes,:]
+Y_test = Y_test[chosen_indexes]
 print(X_test.shape)
 print(Y_test.shape)
 

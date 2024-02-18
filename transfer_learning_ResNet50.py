@@ -109,7 +109,7 @@ print(X_test_dataset.shape)
 
 y_pred_probs = model3.predict(X_test_dataset)
 y_pred = np.argmax(y_pred_probs, axis=1)
-
+np.save(basedir_data+'y_pred_ResNet50.npy', y_pred)
 """
 Confusion matrix plotting
 """
