@@ -1,4 +1,6 @@
 # Deep Learning For Bio-acoustic: Application in Bird call detection
+<a href="https://doi.org/10.5281/zenodo.10675498"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.10675498.svg" alt="DOI"></a>
+
 Here, we develop a three Machine Learning Models to detect Bird calls in the audio sequences. The models explored are: Support Vector Machine (SVM), CNN binary classification from scratch and by transfer learning with the pre-trained ResNet50V2 model.
 
 ## Data collection
@@ -7,6 +9,11 @@ The data used in this work were recorded directly in the field at <a href="https
 <div style="text-align: center;">
     <img src="rasberry.jpg" width="80%" alt="Raspberry Image">
 </div>
+
+The full dataset can be found <a href="https://doi.org/10.5281/zenodo.10675498"> here</a>
+
+<iframe src="https://doi.org/10.5281/zenodo.10675498" width="100%" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
+
 
 There is a demo <a href=""> here in colab </a> for the pre-processing and models training.
 
