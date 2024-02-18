@@ -15,7 +15,7 @@ To keep the Raspberry Pi running smoothly, a background job has been set up so t
 The full dataset can be found <a href="https://doi.org/10.5281/zenodo.10675498"> here</a>
 
 
-There is a demo <a href=""> here in colab </a> for the pre-processing and models training.
+There is a demo <a href="https://colab.research.google.com/drive/1jQNUamyTX5-k_JV7f7WF34VAr16VnmGS?usp=sharing"> here in colab </a> for the pre-processing and models training.
 
 
 ## Setting up
