@@ -12,8 +12,6 @@ The data used in this work were recorded directly in the field at <a href="https
 
 The full dataset can be found <a href="https://doi.org/10.5281/zenodo.10675498"> here</a>
 
-<iframe src="https://doi.org/10.5281/zenodo.10675498" width="100%" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
-
 
 There is a demo <a href=""> here in colab </a> for the pre-processing and models training.
 
