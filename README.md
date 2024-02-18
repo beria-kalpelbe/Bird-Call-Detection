@@ -1,4 +1,4 @@
-# Deep Learning For Bio-acoustic: Application in Bird call detection
+# Deep Learning in Bio-acoustic: case of Bird call detection
 <a href="https://doi.org/10.5281/zenodo.10675498"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.10675498.svg" alt="DOI"></a>
 
 Here, we develop a three Machine Learning Models to detect Bird calls in the audio sequences. The models explored are: Support Vector Machine (SVM), CNN binary classification from scratch and by transfer learning with the pre-trained ResNet50V2 model.
