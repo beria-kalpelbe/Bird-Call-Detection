@@ -6,6 +6,7 @@ import random
 
 # This function converts an audio file to a spectrogram.
 def audio_to_spectrogram(audio, n_fft, hop_length, n_mels):
+
   S = librosa.feature.melspectrogram(y=audio, n_fft=n_fft,
                                      hop_length=hop_length, n_mels=n_mels)
   image = librosa.power_to_db(S, ref=np.max)

@@ -62,7 +62,7 @@ model1.compile(loss='categorical_crossentropy',
 
 history1 = model1.fit(X_train,
           y_train ,
-          epochs=10, validation_data=(X_val, y_val),
+          epochs=13, validation_data=(X_val, y_val),
           batch_size=32)
 del X_train, y_train
 np.save(basedir_data+"history_CNN_good.npy", history1.history)
