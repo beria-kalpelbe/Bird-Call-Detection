@@ -26,7 +26,7 @@ print(Y_dataset.shape)
 """
 Model Specification
 """
-INPUT_SHAPE = (128, 251, 3)
+INPUT_SHAPE = (X_dataset.shape[1], X_dataset.shape[2], 3)
 base_model = ResNet50V2(weights='imagenet', include_top=False, input_shape=INPUT_SHAPE)
 base_model.trainable = False
 inputs = Input(shape=INPUT_SHAPE)
@@ -62,7 +62,7 @@ Model Training
 history3 = model3.fit(X_train,
           y_train ,
           epochs=5,
-          batch_size=32, validation_data=(X_val, y_val))
+          batch_size=15, validation_data=(X_val, y_val))
 
 np.save(basedir_data+"history_ResNet_good.npy", history3.history)
 
