@@ -70,4 +70,34 @@ def generate_new_absence_spectrograms(all_spectrograms, all_targets, quantity):
   return np.asarray(new_spectrograms), np.asarray(new_targets)
 
 
+def undersample(X, Y):
+    """
+    
+    """
+  
+    np.random.seed(42)
 
+    indexes_0 = np.where(Y == '0')[0]
+    indexes_1 = np.where(Y == '1')[0]
+
+    minority_len = min(len(indexes_0), len(indexes_1))
+    majority_len = max(len(indexes_0), len(indexes_1))
+    maj_class = '0' if len(indexes_0) > len(indexes_1) else '1'
+    
+    low_bound = int(minority_len * 0.9)
+    high_bound = min(int(minority_len * 1.3), majority_len)
+    new_majority_len = np.random.randint(low=low_bound, high=high_bound, size=1)[0]
+
+    new_maj_indexes = np.random.choice(
+        indexes_1 if maj_class == "1" else indexes_0, 
+        size=new_majority_len, 
+        replace=False
+    )
+    min_indexes = indexes_1 if maj_class == "0" else indexes_0
+    new_index_sampled = np.concatenate((min_indexes, new_maj_indexes))
+    np.random.shuffle(new_index_sampled)
+
+    X_resampled = X[new_index_sampled, :, :]
+    Y_resampled = Y[new_index_sampled]
+    
+    return X_resampled, Y_resampled

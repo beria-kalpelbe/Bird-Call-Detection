@@ -71,6 +71,8 @@ print('Y_negative shape: ',str(Y_negatives.shape))
 X_dataset = np.concatenate([X_positive, X_negatives])
 Y_dataset = np.concatenate([Y_positive, Y_negatives])
 
+X_dataset, Y_dataset = undersample(X_dataset, Y_dataset)
+
 print('Shape of X dataset: ',str(X_dataset.shape))
 print('Shape of Y dataset: ',str(Y_dataset.shape))
 
