@@ -22,5 +22,3 @@ audio_extension = '.wav'
 basedir_data = 'Saved_data/'
 
 call_order = ['0','1']
-
-colab = False

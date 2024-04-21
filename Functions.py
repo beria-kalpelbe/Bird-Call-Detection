@@ -4,9 +4,19 @@ import numpy as np
 import random
 
 
-# This function converts an audio file to a spectrogram.
 def audio_to_spectrogram(audio, n_fft, hop_length, n_mels):
+  """
+  Converts an audio file to a spectrogram.
 
+  Args:
+    audio: The audio file to convert.
+    n_fft: The number of samples per frame.
+    hop_length: The number of samples between frames.
+    n_mels: The number of mel bands.
+
+  Returns:
+    A spectrogram of the audio file.
+  """
   S = librosa.feature.melspectrogram(y=audio, n_fft=n_fft,
                                      hop_length=hop_length, n_mels=n_mels)
   image = librosa.power_to_db(S, ref=np.max)
@@ -18,15 +28,37 @@ def audio_to_spectrogram(audio, n_fft, hop_length, n_mels):
   spec_scaled = (spec_norm - spec_min) / (spec_max - spec_min)
   return spec_scaled
 
-# This function converts all audio segments in a list to spectrograms.
 def convert_all_to_image(segments, n_fft, hop_length, n_mels):
+  """
+  Converts all audio segments in a list to spectrograms.
+
+  Args:
+    segments: The list of audio segments to convert.
+    n_fft: The number of samples per frame.
+    hop_length: The number of samples between frames.
+    n_mels: The number of mel bands.
+
+  Returns:
+    A list of spectrograms of the audio segments.
+  """
   spectrograms = []
   for segment in segments:
       spectrograms.append(audio_to_spectrogram(segment, n_fft, hop_length, n_mels))
   return np.array(spectrograms)
 
-# This function augments a spectrogram by randomly masking out time and frequency regions.
 def augment_one_spectrogram(spectrogram, true_target, time_mask_length = 2, frequency_mask_width = 2):
+  """
+  Augments a spectrogram by randomly masking out time and frequency regions.
+
+  Args:
+    spectrogram: The spectrogram to augment.
+    true_target: The true target of the spectrogram.
+    time_mask_length: The length of the time mask.
+    frequency_mask_width: The width of the frequency mask.
+
+  Returns:
+    The augmented spectrogram and the true target.
+  """
   ts = np.random.randint(0, spectrogram.shape[1] - time_mask_length, size=3)
   new_spectrogram = np.copy(spectrogram)
   for t in ts:
@@ -36,20 +68,48 @@ def augment_one_spectrogram(spectrogram, true_target, time_mask_length = 2, freq
     new_spectrogram[f:(f + frequency_mask_width), :] = 0
   return new_spectrogram, true_target
 
-# This function randomly selects a presence spectrogram from the dataset.
 def randomly_select_presence(all_spectrograms, targets):
+  """
+  Randomly selects a presence spectrogram from the dataset.
+
+  Args:
+    all_spectrograms: The list of all spectrograms in the dataset.
+    targets: The list of all targets in the dataset.
+
+  Returns:
+    A randomly selected presence spectrogram.
+  """
   presence_indices = np.where(targets =='1')[0]
   random_index = random.randint(0,len(presence_indices)-1)
   return all_spectrograms[presence_indices[random_index]]
 
-# This function randomly selects an absence spectrogram from the dataset.
 def randomly_select_absence(all_spectrograms, targets):
+  """
+  Randomly selects an absence spectrogram from the dataset.
+
+  Args:
+    all_spectrograms: The list of all spectrograms in the dataset.
+    targets: The list of all targets in the dataset.
+
+  Returns:
+    A randomly selected absence spectrogram.
+  """
   absence_indices = np.where(targets =='0')[0]
   random_index = random.randint(0,len(absence_indices)-1)
   return all_spectrograms[absence_indices[random_index]]
 
-# This function generates new presence spectrograms by augmenting existing presence spectrograms.
 def generate_new_presence_spectrograms(all_spectrograms, all_targets, quantity):
+  """
+  Generates new presence spectrograms by augmenting existing presence spectrograms.
+
+  Args:
+    all_spectrograms: The list of all spectrograms in the dataset.
+    all_targets: The list of all targets in the dataset.
+    quantity: The number of new spectrograms to generate.
+
+  Returns:
+    A list of new presence spectrograms.
+  """
   new_spectrograms = []
   new_targets = []
   for i in range (0, quantity):
@@ -59,8 +119,18 @@ def generate_new_presence_spectrograms(all_spectrograms, all_targets, quantity):
     new_targets.append(augmented_target)
   return np.asarray(new_spectrograms), np.asarray(new_targets)
 
-# This function generates new absence spectrograms by augmenting existing absence spectrograms.
 def generate_new_absence_spectrograms(all_spectrograms, all_targets, quantity):
+  """
+  Generates new absence spectrograms by augmenting existing absence spectrograms.
+
+  Args:
+    all_spectrograms: The list of all spectrograms in the dataset.
+    all_targets: The list of all targets in the dataset.
+    quantity: The number of new spectrograms to generate.
+
+  Returns:
+    A list of new absence spectrograms.
+  """
   new_spectrograms = []
   new_targets = []
   for i in range (0, quantity):
@@ -73,7 +143,15 @@ def generate_new_absence_spectrograms(all_spectrograms, all_targets, quantity):
 
 def undersample(X, Y):
     """
-    
+    Undersample the data to balance the classes.
+
+    Args:
+        X (np.ndarray): The data.
+        Y (np.ndarray): The labels.
+
+    Returns:
+        X_resampled (np.ndarray): The undersampled data.
+        Y_resampled (np.ndarray): The undersampled labels.
     """
   
     np.random.seed(42)
