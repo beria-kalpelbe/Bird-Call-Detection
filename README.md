@@ -57,49 +57,54 @@ SVM learns to classify images by finding the hyperplane that best separates the 
 
 
 ## Setting up
-### 1. Load data file
-
-To keep the code running, you need to download the dataset from zenodo:
-
+* Load data file
+    ```
     wget https://zenodo.org/record/10675498/files/Data.zip
     unzip Data.zip
-    
+    ```
    
 
-### 2. Create virtual environment in your workspace
-
+* Create virtual environment in your workspace
+    ```
     python -m venv venv
     source venv/bin/activate
+    ```
 
-### 3. Clone the github repository
-
+* Clone the github repository
+    ```
     git clone https://github.com/beria-kalpelbe/Bird-Call-Detection.git
     cd Bird-Call-Detection
+    ```
 
-### 4. Install requirements
-
+* Install requirements
+    ```
     pip install -r requirements.txt
+    ```
 
-### 5. Pre-process Training data
-
+* Pre-process Training data
+    ```
     python preprocess-train.py
+    ```
 
-### 5. Pre-process Testing data
-
+* Pre-process Testing data
+    ```
     python Ppreprocess-test.py
+    ```
 
-### 6. Train the CNN from scratch
-
+* Train the CNN from scratch
+    ```
     python cnn.py
+    ```
 
-### 7. Train the model using transfer learning with ResNet50V2
-
+* Train the model using transfer learning with ResNet50V2
+    ```
     python resnet50.py
+    ```
 
-### 8. Train the model using SVM
-
+* Train the model using SVM
+    ```
     python svm.py
+    ```
 
-### 9. Access to the results of the models
-
+* Access to the results of the models
 All the results are stored in the Plots folder. 
